@@ -13,7 +13,7 @@
     "require": {
         "php": "^7.2",
         "dmytrof/import-bundle": "^1.10",
-        "dmytrof/fractal-bundle": "^1.0"
+        "dmytrof/models-management-fractal-bundle": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.3"

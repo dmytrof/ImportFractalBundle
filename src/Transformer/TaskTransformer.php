@@ -11,7 +11,7 @@
 
 namespace Dmytrof\ImportFractalBundle\Transformer;
 
-use Dmytrof\ImportBundle\Model\Task as Model;
+use Dmytrof\ImportBundle\Entity\Task\Task as Model;
 use Dmytrof\FractalBundle\Transformer\AbstractTransformer;
 use League\Fractal\Resource\ResourceInterface;
 
