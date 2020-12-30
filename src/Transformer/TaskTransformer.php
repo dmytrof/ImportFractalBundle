@@ -21,6 +21,14 @@ class TaskTransformer extends AbstractTransformer
 
     protected $availableIncludes = [
         'importStatistics',
+        'link',
+        'paginationData',
+        'importer',
+        'reader',
+    ];
+
+    protected $includesToRoot = [
+        'paginationData',
     ];
 
     /**
@@ -34,7 +42,6 @@ class TaskTransformer extends AbstractTransformer
             'id' => $subject->getId(),
             'title' => $subject->getTitle(),
             'code' => $subject->getCode(),
-            'link' => $subject->getLink(),
             'inProgress' => $subject->isInProgress(),
             'importedAt' => $this->transformDateTime($subject->getImportedAt()),
         ];
@@ -48,5 +55,49 @@ class TaskTransformer extends AbstractTransformer
     public function includeImportStatistics(Model $subject): ResourceInterface
     {
         return $this->primitive($subject->getImportStatisticsArr());
+    }
+
+    /**
+     * Includes link
+     * @param Model $subject
+     * @return ResourceInterface
+     */
+    public function includeLink(Model $subject): ResourceInterface
+    {
+        return $this->primitive($subject->getLink());
+    }
+
+    /**
+     * Includes link
+     * @param Model $subject
+     * @return ResourceInterface
+     */
+    public function includePaginationData(Model $subject): ResourceInterface
+    {
+        return $this->primitive([
+            'paginatedLink' => $subject->isPaginatedLink(),
+            'pageParameterInLink' => $subject->getPageParameterInLink(),
+            'firstPageValue' => $subject->getFirstPageValue(),
+        ]);
+    }
+
+    /**
+     * Includes importer
+     * @param Model $subject
+     * @return ResourceInterface
+     */
+    public function includeImporter(Model $subject): ResourceInterface
+    {
+        return $this->item($subject->getImporter(), ImporterTransformer::class);
+    }
+
+    /**
+     * Includes reader
+     * @param Model $subject
+     * @return ResourceInterface
+     */
+    public function includeReader(Model $subject): ResourceInterface
+    {
+        return $this->item($subject->getReader(), ReaderTransformer::class);
     }
 }
