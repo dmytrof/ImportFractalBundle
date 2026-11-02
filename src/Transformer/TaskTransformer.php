@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Dmytrof\ImportFractalBundle\Transformer;
 
 use Dmytrof\ImportBundle\Entity\Task\Task as Model;
@@ -19,7 +21,7 @@ class TaskTransformer extends AbstractTransformer
 {
     protected const SUBJECT_CLASS = Model::class;
 
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         'importStatistics',
         'link',
         'paginationData',
@@ -27,14 +29,13 @@ class TaskTransformer extends AbstractTransformer
         'reader',
     ];
 
-    protected $includesToRoot = [
+    protected array $includesToRoot = [
         'paginationData',
     ];
 
     /**
      * Transforms task to array
      * @param Model $subject
-     * @return array
      */
     public function transformSubject($subject): array
     {
@@ -49,8 +50,6 @@ class TaskTransformer extends AbstractTransformer
 
     /**
      * Includes import statistics
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeImportStatistics(Model $subject): ResourceInterface
     {
@@ -59,8 +58,6 @@ class TaskTransformer extends AbstractTransformer
 
     /**
      * Includes link
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeLink(Model $subject): ResourceInterface
     {
@@ -69,8 +66,6 @@ class TaskTransformer extends AbstractTransformer
 
     /**
      * Includes link
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includePaginationData(Model $subject): ResourceInterface
     {
@@ -83,8 +78,6 @@ class TaskTransformer extends AbstractTransformer
 
     /**
      * Includes importer
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeImporter(Model $subject): ResourceInterface
     {
@@ -93,8 +86,6 @@ class TaskTransformer extends AbstractTransformer
 
     /**
      * Includes reader
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeReader(Model $subject): ResourceInterface
     {

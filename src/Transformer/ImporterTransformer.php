@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Dmytrof\ImportFractalBundle\Transformer;
 
 use Dmytrof\ImportBundle\Importer\ImporterInterface as Model;
@@ -19,14 +21,13 @@ class ImporterTransformer extends AbstractTransformer
 {
     protected const SUBJECT_CLASS = Model::class;
 
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         'options',
     ];
 
     /**
      * Transforms importer to array
      * @param Model $subject
-     * @return array
      */
     public function transformSubject($subject): array
     {
@@ -38,8 +39,6 @@ class ImporterTransformer extends AbstractTransformer
 
     /**
      * Includes options
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeOptions(Model $subject): ResourceInterface
     {

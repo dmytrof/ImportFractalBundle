@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Dmytrof\ImportFractalBundle\Transformer;
 
 use Dmytrof\ImportBundle\Entity\Item\Item as Model;
@@ -19,7 +21,7 @@ class ItemTransformer extends AbstractTransformer
 {
     protected const SUBJECT_CLASS = Model::class;
 
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         'data',
         'formData',
         'task',
@@ -29,7 +31,6 @@ class ItemTransformer extends AbstractTransformer
     /**
      * Transforms task to array
      * @param Model $subject
-     * @return array
      */
     public function transformSubject($subject): array
     {
@@ -45,8 +46,6 @@ class ItemTransformer extends AbstractTransformer
 
     /**
      * Includes data
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeData(Model $subject): ResourceInterface
     {
@@ -55,8 +54,6 @@ class ItemTransformer extends AbstractTransformer
 
     /**
      * Includes form data
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeFormData(Model $subject): ResourceInterface
     {
@@ -65,8 +62,6 @@ class ItemTransformer extends AbstractTransformer
 
     /**
      * Includes entry id
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeEntryId(Model $subject): ResourceInterface
     {
@@ -75,8 +70,6 @@ class ItemTransformer extends AbstractTransformer
 
     /**
      * Includes task
-     * @param Model $subject
-     * @return ResourceInterface
      */
     public function includeTask(Model $subject): ResourceInterface
     {
